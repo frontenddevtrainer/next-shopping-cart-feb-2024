@@ -1,7 +1,13 @@
-const AlbumListing = () => {
+export interface AlbumListingProps {
+  title: string;
+}
+
+const AlbumListing: React.FC<AlbumListingProps> = (props) => {
+  const { title } = props;
+
   return (
     <section className="mb-12">
-      <h2 className="text-3xl text-green-400 mb-4">Top Albums</h2>
+      <h2 className="text-3xl text-green-400 mb-4">{title}</h2>
       <div className="grid grid-cols-5 gap-4">
         <div className="bg-gray-800 p-4 rounded relative">
           <div className="relative">
