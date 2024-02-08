@@ -1,4 +1,3 @@
-import Header from "@/app/components/header/header"
 
 
 // header - HTML5 
@@ -7,7 +6,7 @@ import Header from "@/app/components/header/header"
 export default function Home() {
   return (
     <main>
-      <Header></Header>
+     
     </main>
   );
 }
