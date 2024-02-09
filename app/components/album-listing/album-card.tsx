@@ -10,7 +10,7 @@ const AlbumCard: React.FC<AlbumCardProps> = (props) => {
   const { name, price, singer, thumbnail, id } = album;
 
   return (
-    <Link href="/album">
+    <Link href={`/album/${id}`}>
       <div className="bg-gray-800 p-4 rounded relative">
         <div className="relative">
           <img src={thumbnail} alt="Album" className="w-full rounded mb-2" />
