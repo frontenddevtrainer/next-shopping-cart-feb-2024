@@ -1,40 +1,22 @@
-"use client";
 import RelatedAlbums from "@/app/components/related-albums/related-albums";
 import Songlist from "@/app/components/song-list/song-list";
 import { AlbumResponse } from "@/app/models/AlbumResponse";
-import { useEffect, useState } from "react";
 
 interface AlbumPageProps {
   params: { id: string };
 }
 
-const AlbumPage: React.FC<AlbumPageProps> = ({ params }) => {
+const AlbumPage: React.FC<AlbumPageProps> = async ({ params }) => {
   const { id } = params;
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [data, setData] = useState<AlbumResponse | null>(null);
-  const [error, setError] = useState<any>(null);
+  let data: AlbumResponse | null = null;
 
-  // Component Did Mount
-  useEffect(() => {
-    async function getData() {
-      setIsLoading(true);
-      try {
-        const response = await fetch(
-          "http://music-shop-base-48628374.s3-website.eu-west-2.amazonaws.com/albums.json"
-        );
-        const data:AlbumResponse = await response.json();
-        setData(data);
-      } catch (error: any) {
-        setError(error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
+  try {
+    const response = await fetch(
+      "http://music-shop-base-48628374.s3-website.eu-west-2.amazonaws.com/albums.json"
+    );
+    data = await response.json();
+  } catch (error: any) {}
 
-    getData();
-  }, []);
-
-  //   <></> = react fragment
   return (
     <>
       <div className="relative">
@@ -55,8 +37,7 @@ const AlbumPage: React.FC<AlbumPageProps> = ({ params }) => {
           </button>
         </div>
       </div>
-      {!data?.songs && <p>Loading songs...</p>}
-      {data?.songs && <Songlist list={data?.songs}/>}
+      {data?.songs && <Songlist list={data?.songs} />}
       <RelatedAlbums />
     </>
   );
