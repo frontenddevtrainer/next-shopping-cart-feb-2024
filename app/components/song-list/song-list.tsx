@@ -13,7 +13,7 @@ const Songlist: React.FC<SonglistProps> = ({ list }) => {
           list.length > 0 &&
           list.map((song) => {
             return (
-              <li key={song.id} className="py-2 flex justify-between items-center">
+              <li key={song.title} className="py-2 flex justify-between items-center">
                 <button className="material-icons text-green-400 hover:text-green-300 text-lg mx-1">
                   play_arrow
                 </button>

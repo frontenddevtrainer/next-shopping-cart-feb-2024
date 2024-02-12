@@ -1,3 +1,4 @@
+import AddAlbumCart from "@/app/components/add-album-cart/add-album-cart";
 import RelatedAlbums from "@/app/components/related-albums/related-albums";
 import Songlist from "@/app/components/song-list/song-list";
 import { AlbumResponse } from "@/app/models/AlbumResponse";
@@ -31,9 +32,7 @@ const AlbumPage: React.FC<AlbumPageProps> = async ({ params }) => {
           <h1 className="text-4xl font-bold text-white">Album Name</h1>
         </div>
         <div className="absolute bottom-4 right-4 flex items-center space-x-4">
-          <button className="bg-green-400 text-white px-4 py-2 rounded hover:bg-green-300">
-            Add to Cart
-          </button>
+          <AddAlbumCart album={data} />
           <button className="material-icons text-green-400 hover:text-green-300 text-3xl">
             play_arrow
           </button>
