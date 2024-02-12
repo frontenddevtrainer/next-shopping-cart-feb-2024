@@ -16,6 +16,7 @@ export interface RelatedAlbum {
 }
 
 export interface Song {
+    id: number;
     title:    string;
     singer:   string[];
     duration: string;

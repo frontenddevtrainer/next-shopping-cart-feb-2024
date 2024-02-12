@@ -13,7 +13,9 @@ const AlbumPage: React.FC<AlbumPageProps> = async ({ params }) => {
   try {
     const response = await fetch(
       "http://music-shop-base-48628374.s3-website.eu-west-2.amazonaws.com/albums.json"
-    );
+    , {
+      next: { revalidate : 600 }
+    });
     data = await response.json();
   } catch (error: any) {}
 
