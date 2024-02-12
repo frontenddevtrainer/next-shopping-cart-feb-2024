@@ -12,8 +12,8 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState: initialState,
   reducers: {
-    addToCart: (state, payload: PayloadAction<AlbumResponse>) => {
-      state.items.push(payload as unknown as AlbumResponse);
+    addToCart: (state, action: PayloadAction<AlbumResponse>) => {
+      state.items.push(action.payload);
     },
   },
 });

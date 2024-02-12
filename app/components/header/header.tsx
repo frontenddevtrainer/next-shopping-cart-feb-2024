@@ -2,6 +2,7 @@
 import { useState } from "react";
 import HeaderPopup from "../header-popup/header-popup";
 import { useAppSelector } from "@/lib/hooks"
+import Link from "next/link";
 
 const Header = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -14,10 +15,10 @@ const Header = () => {
     <header className="bg-gray-800 text-white p-4 flex justify-between items-center">
       <h1 className="text-2xl">Music Store</h1>
       <div className="flex items-center">
-        <a href="#" className="mr-6">
+        <Link href="/cart" className="mr-6">
           <span className="material-icons"> shopping_cart</span>
           {cartItems.length}
-        </a>
+        </Link>
 
         <div className="relative inline-block text-left">
           <button
