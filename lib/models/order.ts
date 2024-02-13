@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 
 const AlbumSchema = new Schema({
     name: String
@@ -10,6 +10,6 @@ const OrderSchema = new Schema({
     created_on: { default : new Date(), type: Date }
 })
 
-const OrdersModel = model("orders", OrderSchema, "orders");
+const OrdersModel = mongoose.models.orders || model("orders", OrderSchema, "orders");
 
 export { OrderSchema, OrdersModel };
