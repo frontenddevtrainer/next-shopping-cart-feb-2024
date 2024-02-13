@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <header className="bg-gray-800 text-white p-4 flex justify-between items-center">
-      <h1 className="text-2xl">Music Store</h1>
+      <h1 className="text-2xl"><Link href={"/"}>Music Store</Link></h1>
       <div className="flex items-center">
         <Link href="/cart" className="mr-6">
           <span className="material-icons"> shopping_cart</span>
