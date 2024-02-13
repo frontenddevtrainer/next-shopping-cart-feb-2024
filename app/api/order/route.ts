@@ -6,14 +6,11 @@ import "@/lib/db";
 export async function POST(req: Request) {
   if (req.method === "POST") {
     const data: AlbumResponse[] = await req.json();
-
-    console.log(data);
-
     const albums = data.map((album) => {
       return { name: album.album.name };
     });
 
-    const Order = new OrdersModel({ items: data, processed: false });
+    const Order = new OrdersModel({ items: albums, processed: false });
     const doc = await Order.save();
     return Response.json({ message: "order place succesfully", orderid: doc });
   } else {
