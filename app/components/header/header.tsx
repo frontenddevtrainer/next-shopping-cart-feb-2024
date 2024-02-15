@@ -3,11 +3,11 @@ import { useState } from "react";
 import HeaderPopup from "../header-popup/header-popup";
 import { useAppSelector } from "@/lib/hooks"
 import Link from "next/link";
+import usePopupState from "@/app/hooks/usePopupState";
 
 const Header = () => {
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = usePopupState(false);
   const cartItems = useAppSelector(({ cart })=>{
-    
     return cart.items
   })
 
