@@ -4,6 +4,7 @@ import "./globals.css";
 
 import Header from "@/app/components/header/header";
 import StoreProvider from "./StoreProvider";
+import { CartProvider } from "./hooks/useCart";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,8 +28,10 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-black text-white`}>
         <StoreProvider>
-          <Header />
-          {children}
+          <CartProvider>
+            <Header />
+            {children}
+          </CartProvider>
         </StoreProvider>
       </body>
     </html>
