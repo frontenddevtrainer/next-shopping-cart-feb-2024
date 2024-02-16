@@ -16,7 +16,20 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     orders: () => {
-      return [{ _id: "423434342",title : "Awesome Order", price: 233.3, products: "products list" }];
+      return [
+        {
+          _id: "423424",
+          title: "Awesome Order",
+          price: 233.3,
+          products: "products list",
+        },
+        {
+          _id: "768857686",
+          title: "Awesome Order",
+          price: 233.3,
+          products: "products list",
+        },
+      ];
     },
   },
 };
