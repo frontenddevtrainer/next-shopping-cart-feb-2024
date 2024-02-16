@@ -1,11 +1,12 @@
 import { ApolloServer } from "@apollo/server";
 import { gql } from "graphql-tag";
+import { OrdersModel } from "@/lib/models/order";
+import "@/lib/db";
+
 const typeDefs = gql`
   type Order {
     _id: String
-    title: String!
-    products: String!
-    price: Float!
+    processed: Boolean
   }
 
   type Query {
@@ -15,21 +16,9 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    orders: () => {
-      return [
-        {
-          _id: "423424",
-          title: "Awesome Order",
-          price: 233.3,
-          products: "products list",
-        },
-        {
-          _id: "768857686",
-          title: "Awesome Order",
-          price: 233.3,
-          products: "products list",
-        },
-      ];
+    orders: async () => {
+        // return await fetch("http://localhost:3000/api/orders")
+      return await OrdersModel.find();
     },
   },
 };

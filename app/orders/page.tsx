@@ -4,13 +4,12 @@ import { getClient } from "@/lib/apolloclient";
 import { gql } from "graphql-tag";
 
 const OrderPage: React.FC = async ({}) => {
-
   const { data } = await getClient().query({
     query: gql`
       query Orders {
         orders {
           _id
-          title
+          processed
         }
       }
     `,
@@ -30,14 +29,15 @@ const OrderPage: React.FC = async ({}) => {
             </tr>
           </thead>
           <tbody>
-            {data && data.orders && 
+            {data &&
+              data.orders &&
               data.orders.length > 0 &&
               data.orders.map((item) => {
                 return (
                   <tr key={item._id}>
                     <td>{item._id}</td>
-                    {/* <td>{item.processed ? "Completed" : "Pending"}</td>
-                    <td>{item.items.length}</td> */}
+                    <td>{item.processed ? "Completed" : "Pending"}</td>
+                    {/*<td>{item.items.length}</td> */}
                   </tr>
                 );
               })}
